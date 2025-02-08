@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  title: University Management System API
+  version: 1.0.0
+  description: API for managing students, courses, enrollments, and grades in a university.
+
+servers:
+  - url: https://api.university.com/v1
+    description: Production server
+
+paths:
+  /students:
+    get:
+      summary: Get all students
+      responses:
+        '200':
+          description: A list of students
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+    post:
+      summary: Create a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+          description: Student created successfully
+
+  /courses:
+    get:
+      summary: Get all courses
+      responses:
+        '200':
+          description: A list of courses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+    post:
+      summary: Create a new course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+      responses:
+        '201':
+          description: Course created successfully
+
+  /enrollments:
+    post:
+      summary: Enroll a student in a course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+      responses:
+        '201':
+          description: Enrollment successful
+
+  /grades:
+    post:
+      summary: Assign a grade to a student for a course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grade'
+      responses:
+        '201':
+          description: Grade assigned successfully
+    get:
+      summary: Get a grade for a student in a course
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Grade details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grade'
+
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        major:
+          type: string
+      required:
+        - id
+        - name
+        - email
+
+    Course:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        credits:
+          type: integer
+      required:
+        - id
+        - name
+        - credits
+
+    Enrollment:
+      type: object
+      properties:
+        studentId:
+          type: string
+        courseId:
+          type: string
+      required:
+        - studentId
+        - courseId
+
+    Grade:
+      type: object
+      properties:
+        studentId:
+          type: string
+        courseId:
+          type: string
+        grade:
+          type: string
+      required:
+        - studentId
+        - courseId
+        - grade

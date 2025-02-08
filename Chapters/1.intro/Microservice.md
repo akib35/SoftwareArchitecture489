@@ -27,13 +27,13 @@ Microservices are used in various domains, including:
 - **Healthcare**: To manage patient records, appointments, and billing.
 
 ## Challenges
-- **Complexity**: Managing multiple services can be complex.
-- **Data Consistency**: Ensuring data consistency across services is challenging.
-- **Deployment**: Requires sophisticated deployment strategies.
-- **Monitoring**: Requires robust monitoring and logging mechanisms.
+- **Complexity**: Managing multiple services
+- **Data Consistency**: Ensuring data consistency across services
+- **Deployment**: Sophisticated deployment strategies
+- **Monitoring**: Robust monitoring and logging mechanisms
 
 ## Example
-Consider an e-commerce application:
+Considering an e-commerce application:
 - **User Service**: Manages user information and authentication.
 - **Product Service**: Manages product details and inventory.
 - **Order Service**: Handles order processing and payment.
