@@ -33,6 +33,51 @@ paths:
         '201':
           description: Student created successfully
 
+  /students/{studentId}:
+    get:
+      summary: Get a specific student by ID
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Student details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+    put:
+      summary: Update a specific student by ID
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Student updated successfully
+    delete:
+      summary: Delete a specific student by ID
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Student deleted successfully
+
   /courses:
     get:
       summary: Get all courses
@@ -56,6 +101,51 @@ paths:
       responses:
         '201':
           description: Course created successfully
+
+  /courses/{courseId}:
+    get:
+      summary: Get a specific course by ID
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Course details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+    put:
+      summary: Update a specific course by ID
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+      responses:
+        '200':
+          description: Course updated successfully
+    delete:
+      summary: Delete a specific course by ID
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Course deleted successfully
 
   /enrollments:
     post:
